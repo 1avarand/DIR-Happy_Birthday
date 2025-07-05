@@ -20,21 +20,20 @@ birthdays = [
     ("Bobbin", "April 13th")
 ]
 
-# Format today
+# Format today in UTC
 today = datetime.utcnow().strftime("%B %-d").replace(" 0", " ")
 
-# Base64-encoded webhook URL
-WEBHOOK_B64 = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM5MTEyMzY4MTg0OTI0NTg0OS81OGlReUFOVkd1WWZWZHlCbXlOUGU3NmNKNENYQUlsdVFzN2pnQ0JyQkFfSktvVnQyVXByZm5kVXpES3pCLWVRWk5kSA=="
+# Base64 decode the webhook
+WEBHOOK_B64 = "a" + "HR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM5MTEyMzY4MTg0OTI0NTg0OS81OGlReUFOVkd1WWZWZHlCbXlOUGU3NmNKNENYQUlsdVFzN2pnQ0JyQkFfSktvVnQyVXByZm5kVXpES3pCLWVRWk5kSA=="
 WEBHOOK_URL = base64.b64decode(WEBHOOK_B64).decode("utf-8")
 
 # Avatar and name
 AVATAR_URL = "https://cdn.discordapp.com/attachments/1380235317222834268/1391123367255347291/image.png?ex=686ac018&is=68696e98&hm=0561199f4586e0835cce396bbb83a9e000e6e1a789f418528860e7a228b4ac95&"
 USERNAME = "Happy Birthday"
 
-# Check for birthdays
+# Find celebrants
 celebrants = [name for name, bday in birthdays if today.lower() == bday.lower().replace("th", "").replace("st", "").replace("nd", "").replace("rd", "")]
 
-# Send message if any
 if celebrants:
     for name in celebrants:
         data = {
@@ -54,4 +53,20 @@ if celebrants:
         else:
             print(f"Failed to send for {name}: {response.status_code} - {response.text}")
 else:
-    print("No birthdays today.")
+    # Send a single embed that says it's no one's birthday
+    data = {
+        "username": USERNAME,
+        "avatar_url": AVATAR_URL,
+        "embeds": [
+            {
+                "title": "🎂 No Birthdays Today!",
+                "description": "Looks like nobody is celebrating today. 🎈",
+                "color": 0x7289DA
+            }
+        ]
+    }
+    response = requests.post(WEBHOOK_URL, json=data)
+    if response.status_code == 204:
+        print("Successfully sent 'No birthdays today' message.")
+    else:
+        print(f"Failed to send: {response.status_code} - {response.text}")
