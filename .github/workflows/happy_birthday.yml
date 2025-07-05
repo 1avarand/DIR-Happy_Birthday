@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Allow manual runs too
 
 jobs:
-  send-birthday-wishes:
+  happy_birthday:
     runs-on: ubuntu-latest
 
     steps:
