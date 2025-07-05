@@ -3,10 +3,12 @@ import base64
 from datetime import datetime
 
 birthdays = [
+    ("TEST NAME 0 2025/07/05", "July 5th"),
+    ("TEST NAME 1 2025/07/05", "July 6th"),
     ("Rakusane_kup_jim_kalhoty", "July 8th"),
     ("aquadeb1lxv", "July 10th"),
     ("ADIIIIIIIIIIIIIIIIIIIIIIIIII", "April 2"),
-    ("Tyler (biggest suchas fan)", "November 4"),
+    ("Tyler", "November 4"),
     ("goomglayer", "November 25"),
     ("Ariangoodarzi", "April 6"),
     ("faykeee", "July 17th"),
