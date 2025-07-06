@@ -4,7 +4,7 @@ from datetime import datetime
 
 birthdays = [
     ("TEST NAME 0 2025/07/05", "July 5th"),
-    ("TEST NAME 1 2025/07/05", "July 6th"),
+    ("TEST NAME 1 2025/07/06", "July 6th"),
     ("Rakusane_kup_jim_kalhoty", "July 8th"),
     ("aquadeb1lxv", "July 10th"),
     ("ADIIIIIIIIIIIIIIIIIIIIIIIIII", "April 2"),
