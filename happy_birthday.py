@@ -36,24 +36,25 @@ USERNAME = "Happy Birthday"
 # Find celebrants
 celebrants = [name for name, bday in birthdays if today.lower() == bday.lower().replace("th", "").replace("st", "").replace("nd", "").replace("rd", "")]
 
-if celebrants:
-    for name in celebrants:
-        data = {
-            "username": USERNAME,
-            "avatar_url": AVATAR_URL,
-            "embeds": [
-                {
-                    "title": f"🎉 Happy Birthday, {name}! 🎂",
-                    "description": f"Let's all wish **{name}** a wonderful birthday today! 🥳",
-                    "color": 0xFF69B4
-                }
-            ]
-        }
-        response = requests.post(WEBHOOK_URL, json=data)
-        if response.status_code == 204:
-            print(f"Successfully sent birthday wish to {name}.")
-        else:
-            print(f"Failed to send for {name}: {response.status_code} - {response.text}")
+#if celebrants:
+for name in celebrants:
+    data = {
+        "username": USERNAME,
+        "avatar_url": AVATAR_URL,
+        "embeds": [
+            {
+                "title": f"🎉 Happy Birthday, {name}! 🎂",
+                "description": f"Let's all wish **{name}** a wonderful birthday today! 🥳",
+                "color": 0xFF69B4
+            }
+        ]
+    }
+    response = requests.post(WEBHOOK_URL, json=data)
+    if response.status_code == 204:
+        print(f"Successfully sent birthday wish to {name}.")
+    else:
+        print(f"Failed to send for {name}: {response.status_code} - {response.text}")
+'''
 else:
     # Send a single embed that says it's no one's birthday
     data = {
@@ -72,3 +73,4 @@ else:
         print("Successfully sent 'No birthdays today' message.")
     else:
         print(f"Failed to send: {response.status_code} - {response.text}")
+'''
