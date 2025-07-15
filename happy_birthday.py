@@ -3,23 +3,24 @@ import base64
 from datetime import datetime
 
 birthdays = [
-    ("TEST NAME 0 2025/07/05", "July 5th"),
-    ("TEST NAME 1 2025/07/06", "July 6th"),
-    ("Rakusane_kup_jim_kalhoty", "July 8th"),
-    ("aquadeb1lxv", "July 10th"),
+    ("TEST NAME 0 2025/07/05", "July 5"),
+    ("TEST NAME 1 2025/07/06", "July 6"),
+    ("Rakusane_kup_jim_kalhoty", "July 8"),
+    ("aquadeb1lxv", "July 10"),
     ("ADIIIIIIIIIIIIIIIIIIIIIIIIII", "April 2"),
     ("Tyler", "November 4"),
     ("goomglayer", "November 25"),
     ("Ariangoodarzi", "April 6"),
-    ("faykeee", "July 17th"),
-    ("marc7708", "July 7th"),
-    ("Gabbah", "February 20th"),
+    ("faykeee", "July 17"),
+    ("marc7708", "July 7"),
+    ("Gabbah", "February 20"),
     ("isgoat", "June 30"),
-    ("donkpeek", "April 28th"),
+    ("donkpeek", "April 28"),
     ("roland_pilled_individual", "February 23"),
     ("QUOTE_IF_MEDS_BUTTON", "May 23"),
     ("JoGy2", "April 10"),
-    ("Bobbin", "April 13th")
+    ("Bobbin", "April 13"),
+    ("Facts_Giver", "February 3")
 ]
 
 # Format today in UTC
