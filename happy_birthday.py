@@ -3,8 +3,6 @@ import base64
 from datetime import datetime
 
 birthdays = [
-    ("TEST NAME 0 2025/07/05", "July 5"),
-    ("TEST NAME 1 2025/07/06", "July 6"),
     ("Rakusane_kup_jim_kalhoty", "July 8"),
     ("aquadeb1lxv", "July 10"),
     ("ADIIIIIIIIIIIIIIIIIIIIIIIIII", "April 2"),
@@ -20,7 +18,10 @@ birthdays = [
     ("QUOTE_IF_MEDS_BUTTON", "May 23"),
     ("JoGy2", "April 10"),
     ("Bobbin", "April 13"),
-    ("Facts_Giver", "February 3")
+    ("Facts_Giver", "February 3"),
+    ("godsuke", "June 12"),
+    ("Gaspy", "October 1"),
+    ("minte", "August 17")
 ]
 
 # Format today in UTC
