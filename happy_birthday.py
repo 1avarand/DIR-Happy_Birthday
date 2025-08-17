@@ -1,6 +1,6 @@
 import requests
 import base64
-from datetime import datetime
+from datetime import datetime, timezone
 
 birthdays = [
     ("Rakusane_kup_jim_kalhoty", "July 8"),
@@ -24,21 +24,31 @@ birthdays = [
     ("minte", "August 17")
 ]
 
-# Format today in UTC
-today = datetime.utcnow().strftime("%B %-d").replace(" 0", " ")
+def parse_birthday(bday_str: str):
+    """Turn 'July 08' or 'July 8th' into (7, 8)."""
+    clean = (
+        bday_str.lower()
+        .replace("st", "")
+        .replace("nd", "")
+        .replace("rd", "")
+        .replace("th", "")
+    ).strip()
+    dt = datetime.strptime(clean, "%B %d")
+    return dt.month, dt.day
 
-# Base64 decode the webhook
-WEBHOOK_B64 = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM5MTEyMzY4MTg0OTI0NTg0OS81OGlReUFOVkd1WWZWZHlCbXlOUGU3NnlKNENYQUlsdVFzN2pnQ0JyQkFfSUtvVnQyVVByZm5kVXpES3pCLWVRWk5kSA=="
+# Today in UTC
+today = datetime.now(timezone.utc)
+today_tuple = (today.month, today.day)
+
+# Webhook setup
+WEBHOOK_B64 = "..."  # your base64 string here
 WEBHOOK_URL = base64.b64decode(WEBHOOK_B64).decode("utf-8")
-
-# Avatar and name
-AVATAR_URL = "https://cdn.discordapp.com/attachments/1380235317222834268/1391123367255347291/image.png?ex=686ac018&is=68696e98&hm=0561199f4586e0835cce396bbb83a9e000e6e1a789f418528860e7a228b4ac95&"
 USERNAME = "Happy Birthday"
+AVATAR_URL = "https://..."
 
 # Find celebrants
-celebrants = [name for name, bday in birthdays if today.lower() == bday.lower().replace("th", "").replace("st", "").replace("nd", "").replace("rd", "")]
+celebrants = [name for name, bday in birthdays if parse_birthday(bday) == today_tuple]
 
-#if celebrants:
 for name in celebrants:
     data = {
         "username": USERNAME,
@@ -56,23 +66,3 @@ for name in celebrants:
         print(f"Successfully sent birthday wish to {name}.")
     else:
         print(f"Failed to send for {name}: {response.status_code} - {response.text}")
-'''
-else:
-    # Send a single embed that says it's no one's birthday
-    data = {
-        "username": USERNAME,
-        "avatar_url": AVATAR_URL,
-        "embeds": [
-            {
-                "title": "🎂 No Birthdays Today!",
-                "description": "Looks like nobody is celebrating today. 🎈",
-                "color": 0x7289DA
-            }
-        ]
-    }
-    response = requests.post(WEBHOOK_URL, json=data)
-    if response.status_code == 204:
-        print("Successfully sent 'No birthdays today' message.")
-    else:
-        print(f"Failed to send: {response.status_code} - {response.text}")
-'''
