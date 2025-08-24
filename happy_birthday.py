@@ -2,39 +2,33 @@ import requests
 import base64
 from datetime import datetime, timezone
 
+# 🎂 Birthdays stored in MM-DD format (easy & unambiguous)
 birthdays = [
-    ("Rakusane_kup_jim_kalhoty", "July 8"),
-    ("aquadeb1lxv", "July 10"),
-    ("ADIIIIIIIIIIIIIIIIIIIIIIIIII", "April 2"),
-    ("Tyler", "November 4"),
-    ("goomglayer", "November 25"),
-    ("Ariangoodarzi", "April 6"),
-    ("faykeee", "July 17"),
-    ("marc7708", "July 7"),
-    ("Gabbah", "February 20"),
-    ("isgoat", "June 30"),
-    ("donkpeek", "April 28"),
-    ("roland_pilled_individual", "February 23"),
-    ("QUOTE_IF_MEDS_BUTTON", "May 23"),
-    ("JoGy2", "April 10"),
-    ("Bobbin", "April 13"),
-    ("Facts_Giver", "February 3"),
-    ("godsuke", "June 12"),
-    ("Gaspy", "October 1"),
-    ("minte", "August 17")
+    ("Rakusane_kup_jim_kalhoty", "07-08"),
+    ("aquadeb1lxv", "07-10"),
+    ("ADIIIIIIIIIIIIIIIIIIIIIIIIII", "04-02"),
+    ("Tyler", "11-04"),
+    ("goomglayer", "11-25"),
+    ("Ariangoodarzi", "04-06"),
+    ("faykeee", "07-17"),
+    ("marc7708", "07-07"),
+    ("Gabbah", "02-20"),
+    ("isgoat", "06-30"),
+    ("donkpeek", "04-28"),
+    ("roland_pilled_individual", "02-23"),
+    ("QUOTE_IF_MEDS_BUTTON", "05-23"),
+    ("JoGy2", "04-10"),
+    ("Bobbin", "04-13"),
+    ("Facts_Giver", "02-03"),
+    ("godsuke", "06-12"),
+    ("Gaspy", "10-01"),
+    ("minte", "08-17"),
 ]
 
 def parse_birthday(bday_str: str):
-    """Turn 'July 08' or 'July 8th' into (7, 8)."""
-    clean = (
-        bday_str.lower()
-        .replace("st", "")
-        .replace("nd", "")
-        .replace("rd", "")
-        .replace("th", "")
-    ).strip()
-    dt = datetime.strptime(clean, "%B %d")
-    return dt.month, dt.day
+    """Turn 'MM-DD' into (month, day)."""
+    month, day = map(int, bday_str.split("-"))
+    return month, day
 
 # Today in UTC
 today = datetime.now(timezone.utc)
@@ -44,7 +38,7 @@ today_tuple = (today.month, today.day)
 WEBHOOK_B64 = "..."  # your base64 string here
 WEBHOOK_URL = base64.b64decode(WEBHOOK_B64).decode("utf-8")
 USERNAME = "Happy Birthday"
-AVATAR_URL = "https://..."
+AVATAR_URL = "https://..."  # replace with your avatar image URL
 
 # Find celebrants
 celebrants = [name for name, bday in birthdays if parse_birthday(bday) == today_tuple]
@@ -63,6 +57,6 @@ for name in celebrants:
     }
     response = requests.post(WEBHOOK_URL, json=data)
     if response.status_code == 204:
-        print(f"Successfully sent birthday wish to {name}.")
+        print(f"✅ Successfully sent birthday wish to {name}.")
     else:
-        print(f"Failed to send for {name}: {response.status_code} - {response.text}")
+        print(f"❌ Failed to send for {name}: {response.status_code} - {response.text}")
