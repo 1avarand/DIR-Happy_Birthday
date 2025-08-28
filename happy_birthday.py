@@ -24,7 +24,8 @@ birthdays = [
     ("Gaspy", "10-01"),
     ("minte", "08-17"),
     ("moonEEK!", "12-24"),
-    ("sexa666", "10-31")
+    ("sexa666", "10-31"),
+    ("TEST BIRTHDAY PLEASE IGNORE (2025/08/30)", "08-30")
 ]
 
 def parse_birthday(bday_str: str):
