@@ -25,7 +25,8 @@ birthdays = [
     ("minte", "08-17"),
     ("moonEEK!", "12-24"),
     ("sexa666", "10-31"),
-    ("TEST BIRTHDAY PLEASE IGNORE (2025/08/30)", "08-30")
+    ("TEST BIRTHDAY PLEASE IGNORE (2025/08/30)", "08-30"),
+    ("TEST BIRTHDAY PLEASE IGNORE (2025/08/31)", "08-31")
 ]
 
 def parse_birthday(bday_str: str):
@@ -38,10 +39,10 @@ today = datetime.now(timezone.utc)
 today_tuple = (today.month, today.day)
 
 # Webhook setup
-WEBHOOK_B64 = "..."  # your base64 string here
+WEBHOOK_B64 = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM5MTEyMzY4MTg0OTI0NTg0OS81OGlReUFOVkd1WWZWZHlCbXlOUGU3NnlKNENYQUlsdVFzN2pnQ0JyQkFfSUtvVnQyVVByZm5kVXpES3pCLWVRWk5kSA=="
 WEBHOOK_URL = base64.b64decode(WEBHOOK_B64).decode("utf-8")
 USERNAME = "Happy Birthday"
-AVATAR_URL = "https://..."  # replace with your avatar image URL
+AVATAR_URL = "https://cdn.discordapp.com/attachments/1380235317222834268/1391123367255347291/image.png?ex=68b3eb58&is=68b299d8&hm=45f704355193928d6f7274a73b89446cec7551cf54eab55c257c26d2b61a2109"
 
 # Find celebrants
 celebrants = [name for name, bday in birthdays if parse_birthday(bday) == today_tuple]
