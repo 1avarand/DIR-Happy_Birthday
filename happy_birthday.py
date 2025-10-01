@@ -27,7 +27,8 @@ birthdays = [
     ("moonEEK!", "12-24"),
     ("sexa666", "10-31"),
     ("deko_1_LanDaLan_final_zywoo_0", "04-03"),
-    ("PaNini", "12-17")
+    ("PaNini", "12-17"),
+    ("yesi", "04-24")
 ]
 
 def parse_birthday(bday_str: str):
@@ -40,7 +41,7 @@ today = datetime.now(timezone.utc)
 today_tuple = (today.month, today.day)
 
 # Webhook setup
-WEBHOOK_URL = os.environ('URL')
+WEBHOOK_URL = os.environ['URL']
 USERNAME = "Happy Birthday"
 AVATAR_URL = "https://cdn.discordapp.com/attachments/1380235317222834268/1391123367255347291/image.png?ex=68b3eb58&is=68b299d8&hm=45f704355193928d6f7274a73b89446cec7551cf54eab55c257c26d2b61a2109"
 
