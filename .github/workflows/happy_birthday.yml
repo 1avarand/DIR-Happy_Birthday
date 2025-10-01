@@ -24,4 +24,6 @@ jobs:
         pip install requests
 
     - name: Run birthday bot
+      env:
+        URL: ${{ secrets.URL }}
       run: python happy_birthday.py
