@@ -3,7 +3,7 @@ import requests
 import base64
 from datetime import datetime, timezone
 
-# 🎂 Birthdays stored in MM-DD format (easy & unambiguous)
+# 🎂 Birthdays stored in MM-DD format
 birthdays = [
     ("Rakusane_kup_jim_kalhoty", "07-08"),
     ("aquadeb1lxv", "07-10"),
