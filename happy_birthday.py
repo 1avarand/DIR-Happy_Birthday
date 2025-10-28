@@ -32,7 +32,9 @@ birthdays = [
     ("FQ_Tommy", "03-01"),
     ("SMALL_NOT_BIG_CLAN", "10-31"),
     ("StefanFlashdeck", "07-07"),
-    ("Elextures", "12-18")
+    ("Elextures", "12-18"),
+    ("DLDDY", "01-25"),
+    ("VSIION", "03-04")
 ]
 
 def parse_birthday(bday_str: str):
