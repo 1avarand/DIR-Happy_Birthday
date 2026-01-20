@@ -43,7 +43,8 @@ birthdays = [
     ("siksewen", "07-06"),
     ("Silky", "07-25"),
     ("Abibass", "11-21"),
-    ("mafa", "11-18")
+    ("mafa", "11-18"),
+    ("HouseTyrell", "01-27")
 ]
 
 def parse_birthday(bday_str: str):
