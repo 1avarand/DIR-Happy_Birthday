@@ -33,7 +33,7 @@ birthdays = [
     ("SMALL_NOT_BIG_CLAN", "10-31"),
     ("StefanFlashdeck", "07-07"),
     ("Elextures", "12-18"),
-    ("DLDDY", "01-25"),
+    ("DlDDY", "01-25"),
     ("Vsiion", "03-04"),
     ("novvythebottomfragger", "11-06"),
     ("keymstr", "07-16"),
